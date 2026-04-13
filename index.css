@@ -1,0 +1,139 @@
+/* 基本リセットとタイポグラフィ */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8f9fa; /* うっすらとしたグレーで紙の質感を表現 */
+    color: #333;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.8;
+}
+
+.hub-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* ヘッダー周り */
+.hub-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hub-header h1 {
+    font-size: 2.5em;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.hub-lead {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hub-description {
+    color: #555;
+    font-size: 0.95em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ナビゲーションカード（FlexboxでPCは横並び、スマホは縦並び） */
+.hub-nav {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+    .hub-nav {
+        flex-direction: column;
+    }
+}
+
+.nav-card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    border-color: #ccc;
+}
+
+.part-label {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #888;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 2px;
+}
+
+.nav-card h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.nav-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.card-action {
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: right;
+    color: #333;
+}
+
+.nav-card:hover .card-action span {
+    margin-left: 5px; /* ホバー時に矢印が少し右に動く演出 */
+    transition: margin 0.2s;
+}
+
+/* フッター */
+.hub-footer {
+    text-align: center;
+    font-size: 0.85em;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+/* アニメーション用クラス（JSで制御） */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }

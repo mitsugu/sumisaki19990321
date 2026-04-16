@@ -1,23 +1,33 @@
-/* 基本リセットとタイポグラフィ */
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. Base & Reset
+   ========================================================================== */
 body, h1, h2, p {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #f8f9fa; /* うっすらとしたグレーで紙の質感を表現 */
+    background-color: #f8f9fa; /* 静謐なアーカイブを感じさせる僅かなグレー */
     color: #333;
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* ==========================================================================
+   2. Layout (Hub Container)
+   ========================================================================== */
 .hub-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 20px;
 }
 
-/* ヘッダー周り */
+/* ==========================================================================
+   3. Header Section
+   ========================================================================== */
 .hub-header {
     text-align: center;
     margin-bottom: 60px;
@@ -33,38 +43,37 @@ body {
 }
 
 .hub-lead {
-    font-size: 1.2em;
+    font-size: 1.15em;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #222;
 }
 
 .hub-description {
     color: #555;
     font-size: 0.95em;
-    max-width: 512px;
+    max-width: 750px;
     margin: 0 auto;
-	text-align:left;
+    text-align: left; /* 長めの文章が読みやすいように左揃え */
+    line-height: 1.9;
 }
 
-/* ナビゲーションカード（FlexboxでPCは横並び、スマホは縦並び） */
+/* ==========================================================================
+   4. Navigation Grid (Cards)
+   ========================================================================== */
 .hub-nav {
-    display: flex;
-    gap: 30px;
+    display: grid;
+    /* 画面幅に余裕があれば2列（最低380px）、狭ければ自動で1列に折り返し */
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 25px;
     margin-bottom: 60px;
 }
 
-@media (max-width: 768px) {
-    .hub-nav {
-        flex-direction: column;
-    }
-}
-
 .nav-card {
-    flex: 1;
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 40px 30px;
+    padding: 35px 25px;
     text-decoration: none;
     color: inherit;
     display: flex;
@@ -80,6 +89,9 @@ body {
     border-color: #ccc;
 }
 
+/* ==========================================================================
+   5. Card Internals
+   ========================================================================== */
 .part-label {
     display: inline-block;
     font-size: 0.8em;
@@ -92,29 +104,37 @@ body {
 }
 
 .nav-card h2 {
-    font-size: 1.4em;
-    margin-bottom: 15px;
+    font-size: 1.3em;
+    margin-bottom: 12px;
+    color: #222;
 }
 
 .nav-card p {
-    font-size: 0.9em;
+    font-size: 0.88em;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
 .card-action {
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 0.85em;
     text-align: right;
     color: #333;
+    margin-top: auto; /* ボタンテキストを常にカード下部に押し付ける */
+}
+
+.card-action span {
+    transition: margin 0.2s ease-in-out;
 }
 
 .nav-card:hover .card-action span {
-    margin-left: 5px; /* ホバー時に矢印が少し右に動く演出 */
-    transition: margin 0.2s;
+    margin-left: 8px; /* ホバー時に矢印が少し右に動く演出 */
 }
 
-/* フッター */
+/* ==========================================================================
+   6. Footer
+   ========================================================================== */
 .hub-footer {
     text-align: center;
     font-size: 0.85em;
@@ -123,7 +143,9 @@ body {
     padding-top: 30px;
 }
 
-/* アニメーション用クラス（JSで制御） */
+/* ==========================================================================
+   7. Animations (JS hooks)
+   ========================================================================== */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -135,6 +157,22 @@ body {
     transform: translateY(0);
 }
 
-.delay-1 { transition-delay: 0.2s; }
-.delay-2 { transition-delay: 0.4s; }
-.delay-3 { transition-delay: 0.6s; }
+/* カードが順番にフワッと浮き上がるための遅延設定 */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* ==========================================================================
+   8. Responsive Tweaks
+   ========================================================================== */
+@media (max-width: 800px) {
+    .hub-container {
+        padding: 40px 15px;
+    }
+    .hub-header h1 {
+        font-size: 2em;
+    }
+    .hub-nav {
+        grid-template-columns: 1fr; /* スマホでは完全に1列にする強制指定 */
+    }
+}

@@ -41,8 +41,9 @@ body {
 .hub-description {
     color: #555;
     font-size: 0.95em;
-    max-width: 700px;
+    max-width: 512px;
     margin: 0 auto;
+	text-align:left;
 }
 
 /* ナビゲーションカード（FlexboxでPCは横並び、スマホは縦並び） */

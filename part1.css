@@ -234,9 +234,12 @@ div.left > figure figcaption {
 .glossary-container > dl > dt {
 	font-weight:bold;
 }
+ul.quote {
+	list-style-type: "> ";
+}
 /* 画面幅が768px以下（スマホ・タブレット）の場合の調整 */
 @media screen and (max-width: 768px) {
- 
+
   /* メインコンテンツの幅を広げて画面を有効活用する */
   #contents {
     width: 95%;
@@ -266,6 +269,7 @@ div.left > figure figcaption {
     aspect-ratio: 4 / 3; /* 元の 512:384 の比率を維持 */
   }
 }
+
 /* 印刷用のスタイル設定 */
 @media print {
     .page-break {
